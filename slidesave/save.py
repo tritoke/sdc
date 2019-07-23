@@ -15,7 +15,8 @@ else:
 url = f"https://docs.google.com/presentation/d/{slides_id}/export/pptx"
 request = get(url)
 if request:
-    open(f"{datetime.strftime(datetime.now(),'%F--%H:%M')}.pptx","wb").write(request.content)
+    with open(f"{datetime.strftime(datetime.now(),'%F--%H:%M')}.pptx","wb") as f:
+        f.write(request.content)
     while True:
         try:
             mins = int(input("Enter the number of minutes between each backup save: "))
@@ -25,7 +26,7 @@ if request:
                 break
         except ValueError:
             print("Invalid number of minutes, please enter number and nothing else, i.e. 30")
-    secs = 5 #mins * 60
+    secs = mins * 60
     backups = 1
     start = datetime.now()
     while True:
@@ -33,7 +34,8 @@ if request:
         backups += 1
         sleep(secs)
         request = get(url)
-        open(f"{datetime.now()}.pptx", "wb").write(request.content)
+        with open(f"{datetime.strftime(datetime.now(),'%F--%H:%M')}.pptx","wb") as f:
+            f.write(request.content)
 
 else:
     print("Getting page failed, please restart and enter the correct id.")
