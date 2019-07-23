@@ -15,7 +15,7 @@ else:
 url = f"https://docs.google.com/presentation/d/{slides_id}/export/pptx"
 request = get(url)
 if request:
-    open(f"{datetime.now()}.pptx", "wb").write(request.content)
+    open(f"{datetime.datetime.strftime(datetime.datetime.now(),'%F--%H:%M')}.pptx","wb").write(request.content)
     while True:
         try:
             mins = int(input("Enter the number of minutes between each backup save: "))
