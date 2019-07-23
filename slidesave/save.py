@@ -5,7 +5,7 @@ from time import sleep
 from os import getcwd
 
 
-BASEPATH = getcwd()
+BASEPATH = getcwd() + "/"
 print(f"\nSaving backups to {BASEPATH}\n")
 original_url = input("Enter page url: ")
 search = re.search(r"\S+/d/(?P<id>.*)/.*", original_url)
