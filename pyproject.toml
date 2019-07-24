@@ -1,14 +1,13 @@
 [tool.poetry]
-name = "sdc"
+name = "python"
 version = "0.1.0"
-description = ""
+description = "A set of scripts I am writing to help with the UKSDC competition and with the world final of the SDC."
 authors = ["Sam <tritoke@protonmail.com>"]
 license = "MIT"
 
 [tool.poetry.dependencies]
 python = "^3.7"
-requests = "^2.21"
-matplotlib = "^3.0"
+requests = "^2.22"
 
 [tool.poetry.dev-dependencies]
 
