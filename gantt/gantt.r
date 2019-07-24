@@ -24,4 +24,5 @@ svg("gantt.svg")
 print(plot)
 dev.off()
 
-ggsave("gantt.png", plot=plot)
+ggsave(plot, filename="gantt.png",
+       width=6.5, height=3.5, units="in", type="cairo", dpi=300)
