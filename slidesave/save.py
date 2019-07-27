@@ -6,7 +6,9 @@ from os import getcwd
 
 
 BASEPATH = getcwd() + "/"
+
 print(f"\nSaving backups to {BASEPATH}\n")
+
 original_url = input("Enter page url: ")
 search = re.search(r"\S+/d/(?P<id>[^/]*)/.*", original_url)
 
@@ -44,7 +46,7 @@ if request:
         backups += 1
         sleep(secs)
         request = get(url)
-        with open(f"{BASEPATH}{datetime.strftime(datetime.now(),'%F--%H:%M')}.pptx", "wb") as f:
+        with open(f"{BASEPATH}{datetime.strftime(datetime.now(),'%F-%H:%M.pptx')}", "wb") as f:
             f.write(request.content)
 
 else:
