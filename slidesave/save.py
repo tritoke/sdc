@@ -8,8 +8,7 @@ from os import getcwd
 BASEPATH = getcwd() + "/"
 print(f"\nSaving backups to {BASEPATH}\n")
 original_url = input("Enter page url: ")
-search = re.search(r"\S+/d/(?P<id>.*)/.*", original_url)
-
+search = re.search(r"\S+/d/(?P<id>[^/]*)/.*", original_url)
 
 if not search:
     print("Couldn't parse id from URL")
@@ -21,9 +20,10 @@ if not search:
 else:
     slides_id = search.group("id")
 url = f"https://docs.google.com/presentation/d/{slides_id}/export/pptx"
+print(f"Downloading from {url}")
 request = get(url)
 if request:
-    with open(f"{BASEPATH}{datetime.strftime(datetime.now(),'%F--%H:%M')}.pptx", "wb") as f:
+    with open(f"{BASEPATH}{datetime.strftime(datetime.now(),'%F-%H:%M.pptx')}", "wb") as f:
         f.write(request.content)
     while True:
         try:
